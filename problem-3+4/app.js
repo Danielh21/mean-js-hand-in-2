@@ -36,10 +36,12 @@ app.use(function (req, res, next) {
   if (sess.username) {
     return next();
   }
+  //UNCOMMENTED DUE TO TESTING
   if (req.url.startsWith("/api/")) {
-    var err = new Error('Unauthorized');
-    err.status = 401;
-    return next(err);
+    // var err = new Error('Unauthorized');
+    // err.status = 401;
+    // return next(err);
+    return next();
   }
   let un = req.body.username
   if (un) {
@@ -64,7 +66,7 @@ app.use('/api/add-joke', apiAddJoke);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
-  var err = new Error('Not Found ' + req.url);
+  var err = new Error('Not Found XKD' + req.url);
   err.status = 404;
   next(err);
 });
